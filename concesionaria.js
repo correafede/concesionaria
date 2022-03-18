@@ -16,13 +16,20 @@ const concesionaria =            //**creo un objeto literal que el atributo auto
             return patenteFinder;
             }
         },
-        venderAuto: function venderAuto(patente) {
-            let i = this.autos.indexOf(this.buscarAuto(patente))
-            this.autos[i].vendido = true
-            return(this.autos)
+        venderAuto: function venderAuto(patente) 
+        {
+            let i = autos.indexOf(this.buscarAuto(patente))
+            autos[i].vendido = true;
+            return autos;
+        },
+        autosParaLaVenta: function autosParaLaVenta()
+        {
+        let filtro = autos.filter(autoV => autoV.vendido === false);
+        return filtro;
         }
+
 }
 
 
 
-    console.log(concesionaria.venderAuto('APL123'));
+console.log(concesionaria.autosParaLaVenta());
