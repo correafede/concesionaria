@@ -34,13 +34,32 @@ const concesionaria =            //**creo un objeto literal que el atributo auto
         },
         listaDeVentas: function listaDeVentas() 
         {
+            let listadoP = [];  /*incie un array vacio donde guardamos el listado de porecios de autos vendidos, si es que hay alguno */
+            let listadoVendidos = autos.filter(autoP => autoP.vendido === true);
+            if (listadoVendidos.length > 0){
+
+            listadoVendidos.forEach( precio => { listadoP.push(precio)}) 
+            return listadoP;
+            }else {
+                return [];
+            }
             
-            
-        }
+        },
+        totalDeVentas: function totalDeVentas()
+        {
+        let listado = this.listaDeVentas(); 
+        console.log(listado);
+        if (listado.length > 0) {
+            let suma = listado.reduce((cont , listado) => cont += listado.precio, 0 );
+
+
+            return "El total de las ventas es" + suma;
+          } else {
+            return 0;
+          }
 
 }
-
-
-
+}
 
 console.log(concesionaria.listaDeVentas());
+ 
