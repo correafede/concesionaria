@@ -58,8 +58,26 @@ const concesionaria =            //**creo un objeto literal que el atributo auto
             return 0;
           }
 
-}
+        },
+        puedeComprar: function puedeComprar(patente, persona) {
+            let car = this.buscarAuto(patente);
+           if (persona.capacidadDePagoTotal >= car.precio && persona.capacidadDePagoEnCuotas >= car.precio / car.cuotas)
+            {
+            return true;
+            }else{
+            return false;
+            } 
+        }
 }
 
-console.log(concesionaria.listaDeVentas());
- 
+
+
+
+
+
+console.log(concesionaria.puedeComprar("APL123",
+    {
+    nombre: "Juan",
+    capacidadDePagoEnCuotas: 100,
+    capacidadDePagoTotal: 100000000
+    }));
