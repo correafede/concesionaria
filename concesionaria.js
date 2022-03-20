@@ -29,12 +29,18 @@ const concesionaria =            //**creo un objeto literal que el atributo auto
         },
         autosNuevos: function autos0KM()
         {
-        this.autosParaLaVenta;
-        let kms = autos.filter(autoK => autoK.km < 100);
+        let kms = this.autosParaLaVenta().filter(autoK => autoK.km <= 100);
         return kms;
+        },
+        listaDeVentas: function listaDeVentas() 
+        {
+            
+            
         }
 
 }
 
 
-console.log(concesionaria.autosNuevos());
+
+
+console.log(concesionaria.listaDeVentas());
