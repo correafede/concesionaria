@@ -67,17 +67,63 @@ const concesionaria =            //**creo un objeto literal que el atributo auto
             }else{
             return false;
             } 
+        },
+        autosQuePuedeComprar: function autosQuePuedeComprar(persona){
+            let listaVerde = [];
+            let listaT = this.autosParaLaVenta();
+            console.log(persona);
+            
+            let verificar = listaT.forEach( (verification) => {
+                let verificar=false;
+                console.log(listaT);
+                
+                if (persona.capacidadDePagoTotal >= listaT.precio && persona.capacidadDePagoEnCuotas >= listaT.precio / listaT.cuotas)
+                {
+                return true;
+                }else{
+                    return "Lo siento no puedes comprar nada";
+                    } 
+
+            })
+           console.log(verificar);
+               if (verificar === true) {
+                  listaVerde.push(listaT);
+               };
+               
+            return listaVerde;   
         }
+
 }
 
+         
+
+         
 
 
-
-
-
-console.log(concesionaria.puedeComprar("APL123",
-    {
+console.log(concesionaria.autosQuePuedeComprar({
     nombre: "Juan",
-    capacidadDePagoEnCuotas: 100,
-    capacidadDePagoTotal: 100000000
+    capacidadDePagoEnCuotas: 99920000,
+    capacidadDePagoTotal: 999100000
     }));
+
+
+
+
+
+
+
+
+    /*
+    autosQuePuedeComprar: function autosQuePuedeComprar(persona) {
+            let listaComprable = [];
+            let listaVenta= this.autosParaLaVenta();
+            let agregar = false;
+            this.autos.map(function(patente){
+               agregar = concesionaria.puedeComprar(patente,persona);
+
+            if (agregar == true) {
+            listaComprable.push(patente);
+            }
+            return listaComprable;
+    }
+*/
