@@ -16,23 +16,26 @@ const concesionaria =            //**creo un objeto literal que el atributo auto
             return patenteFinder;
             }
         },
-        venderAuto: function venderAuto(patente) 
+    venderAuto: function venderAuto(patente) 
         {
-            let i = autos.indexOf(this.buscarAuto(patente))
-            autos[i].vendido = true;
+            let vender = this.buscarAuto(patente);
+            if (vender.vendido === false){
+            vender.vendido = true;
+    
             return autos;
+        }
         },
-        autosParaLaVenta: function autosParaLaVenta()
+    autosParaLaVenta: function autosParaLaVenta()
         {
-        let filtro = autos.filter(autoV => autoV.vendido === false);
+        let filtro = autos.filter(auto => auto.vendido === false);
         return filtro;
         },
-        autosNuevos: function autos0KM()
+    autosNuevos: function autos0KM()
         {
         let kms = this.autosParaLaVenta().filter(autoK => autoK.km <= 100);
         return kms;
         },
-        listaDeVentas: function listaDeVentas() 
+    listaDeVentas: function listaDeVentas() 
         {
             let listadoP = [];  /*incie un array vacio donde guardamos el listado de porecios de autos vendidos, si es que hay alguno */
             let listadoVendidos = autos.filter(autoP => autoP.vendido === true);
@@ -45,7 +48,7 @@ const concesionaria =            //**creo un objeto literal que el atributo auto
             }
             
         },
-        totalDeVentas: function totalDeVentas()
+    totalDeVentas: function totalDeVentas()
         {
         let listado = this.listaDeVentas(); 
         console.log(listado);
@@ -59,7 +62,7 @@ const concesionaria =            //**creo un objeto literal que el atributo auto
           }
 
         },
-        puedeComprar: function puedeComprar(patente, persona) {
+    puedeComprar: function puedeComprar(patente, persona) {
             let car = this.buscarAuto(patente);
            if (persona.capacidadDePagoTotal >= car.precio && persona.capacidadDePagoEnCuotas >= car.precio / car.cuotas)
             {
@@ -68,7 +71,7 @@ const concesionaria =            //**creo un objeto literal que el atributo auto
             return false;
             } 
         },
-        autosQuePuedeComprar: function autosQuePuedeComprar(persona){
+    autosQuePuedeComprar: function autosQuePuedeComprar(persona){
             let listaVerde = [];
             let listaT = this.autosParaLaVenta();
             console.log(persona);
@@ -97,14 +100,14 @@ const concesionaria =            //**creo un objeto literal que el atributo auto
 
          
 
-         
 
 
-console.log(concesionaria.autosQuePuedeComprar({
+/*console.log(concesionaria.autosQuePuedeComprar({
     nombre: "Juan",
     capacidadDePagoEnCuotas: 99920000,
     capacidadDePagoTotal: 999100000
     }));
+    */
 
 
 
